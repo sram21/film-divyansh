@@ -1,7 +1,6 @@
-from divyanshfilm import create_app
+from flask import Flask
+from divyanshfilm.film import div_film
 
-app = create_app()
+app = Flask(__name__, static_url_path='/static')
 
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=5000,debug=False)
+app.register_blueprint(div_film)

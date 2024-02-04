@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+    <style>
+
+        .menu a.active {
+        color: red;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        h3 {
+            margin-top: 10px;
+        }
+    </style>
+
+    <div class="header">
+        <a href="{{ url_for('film.home') }}"><h1>Divyansh Films</h1></a>
+        <div class="menu">
+            <a href="{{ url_for('film.films') }}" {% if active_menu == 'films' %}class="active"{% endif %}>Films</a>
+            <a href="{{ url_for('film.contact') }}" {% if active_menu == 'contact' %}class="active"{% endif %}>Contact</a>
+            <a href="https://www.instagram.com/divyansh_461/" target="_blank">
+                <i class="fa fa-instagram" style="font-size:25px; color:white"></i>
+            </a>
+        </div>
+    </div>
+
+
+    
+    
+    <div class="contact-container">
+        <h1><u>Contact Us</u></h1>
+        <h3><b style="padding-left: 30px;">Email:</b> <i>divyansh458sharma@gmail.com</i> </h3>
+        <h3><b>Mobile:</b> <i>+91 9419100461</i> </h3>
+        <h3><b>Instagram:</b> <i>divyansh_461</i></h3>
+    </div>
+
+    {% endblock %}
+
+    {% block scripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.menu a[href="{{ url_for('film.films') }}"]').classList.add('active');
+        });
+    </script>
+    {% endblock %}

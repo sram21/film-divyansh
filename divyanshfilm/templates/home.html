@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divyansh-Film</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #video-container {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #enter-overlay {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        #enter-overlay h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        #enter-overlay a {
+            color: red;
+            text-decoration: none;
+            font-size: 2.7em;
+            cursor: pointer;
+            transition: text-decoration 0.3s;
+        }
+        #enter-overlay a:hover {
+            text-decoration: line-through; /* Add strikethrough effect on hover */
+        }
+    </style>
+</head>
+<body>
+    <div id="video-container">
+        <video autoplay muted loop>
+            <source src="{{ url_for('static', filename='videos/website_edit.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div id="enter-overlay">
+        <a href="{{ url_for('film.films') }}"><b style="color: red;">ENTER</b></a>
+    </div>
+</body>
+</html>

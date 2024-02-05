@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+
+
+{% block content %}
+
+<style>
+    /* Add this style to highlight the active menu item */
+    .menu a.active {
+        color: red;
+    }
+</style>
+
+<div class="header">
+    <a href="{{ url_for('home') }}"><h1>Divyansh Films</h1></a>
+    <div class="menu">
+        <a href="{{ url_for('films') }}" {% if active_menu == 'films' %}class="active"{% endif %}>Films</a>
+        <a href="{{ url_for('contact') }}" {% if active_menu == 'contact' %}class="active"{% endif %}>Contact</a>
+        <a href="https://www.instagram.com/divyansh_461/" target="_blank">
+            <i class="fa fa-instagram" style="font-size:25px; color:white"></i>
+        </a>
+    </div>
+</div>
+    
+    <div class="content">
+        <div class="videos-container">
+            <video controls muted loop poster="/static/image/df2.png" width="75%" height="auto" controlsList="nodownload">
+                <source src="/static/videos/A_world_far_away.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p>A WORLD FAR AWAY - DOCUMENTARY | TRAILER |METEORA|GREECE</p>
+        
+        <div class="videos-container">
+            <video controls muted loop poster="/static/image/df1.png" width="75%" height="auto" controlsList="nodownload">
+                <source src="/static/videos/The_Lurking_GRADED_HD_4k_Trailer_Redit.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p>THE LURKING GRADED HD 4k TRAILER REDIT</p>
+
+        <div class="videos-container">
+            <video controls muted loop poster="/static/image/df3.png" width="75%" height="auto" controlsList="nodownload">
+                <source src="/static/videos/Departure_Short film _Teaser.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p>The DEPARTURE - SHORT FILM |TEASER|</p>
+
+        <div class="videos-container">
+            <video controls muted loop poster="/static/image/df4.png" width="75%" height="auto" controlsList="nodownload">
+                <source src="/static/videos/Ambivalence_ Short_Film.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p>AMBIVALENCE SHORT FILM</p>
+
+        <div class="videos-container">
+            <video controls muted loop poster="/static/image/df5.png" width="75%" height="auto" controlsList="nodownload">
+                <source src="/static/videos/miles_away.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <p>4000 MILES AWAY - INDIAN IN AARHUS, DENMARK |SHORT DOCUMENTARY|</p>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('.menu a[href="{{ url_for('films') }}"]').classList.add('active');
+    });
+</script>
+{% endblock %}

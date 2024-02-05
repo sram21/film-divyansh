@@ -12,10 +12,10 @@
 </style>
 
 <div class="header">
-    <a href="{{ url_for('film.home') }}"><h1>Divyansh Films</h1></a>
+    <a href="{{ url_for('home') }}"><h1>Divyansh Films</h1></a>
     <div class="menu">
-        <a href="{{ url_for('film.films') }}" {% if active_menu == 'films' %}class="active"{% endif %}>Films</a>
-        <a href="{{ url_for('film.contact') }}" {% if active_menu == 'contact' %}class="active"{% endif %}>Contact</a>
+        <a href="{{ url_for('films') }}" {% if active_menu == 'films' %}class="active"{% endif %}>Films</a>
+        <a href="{{ url_for('contact') }}" {% if active_menu == 'contact' %}class="active"{% endif %}>Contact</a>
         <a href="https://www.instagram.com/divyansh_461/" target="_blank">
             <i class="fa fa-instagram" style="font-size:25px; color:white"></i>
         </a>
@@ -69,7 +69,7 @@
 {% block scripts %}
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        document.querySelector('.menu a[href="{{ url_for('film.films') }}"]').classList.add('active');
+        document.querySelector('.menu a[href="{{ url_for('films') }}"]').classList.add('active');
     });
 </script>
 {% endblock %}

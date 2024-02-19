@@ -15,8 +15,9 @@
         }
 
         .header {
-            position: fixed;
+            /* position: fixed; */
             top: 0;
+            margin-top: 40px;
             width: 100%;
             display: flex;
             justify-content: space-between;
@@ -47,79 +48,184 @@
             color: red; 
         }
 
-        .menu img {
-            width: 30px; /* Adjust the width as needed */
-            height: 30px; /* Adjust the height as needed */
-            margin-right: 10px;
-        }
-
-
-        .content {
-            margin-top: 120px; /* Adjust the top margin to avoid content being hidden under the fixed header */
-        }
-
-        .videos-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-top: 50px;
-            /* height: 100vh; */
-        }
-
-        .video-item {
-            width: 70%; 
-            margin-bottom: 20px;
-            border: 2px solid white;
-            overflow: hidden; 
-            margin-top: 30px;
-        }
-
-        #videos video {
-            width: 100%; /* Adjust the width as needed */
-            height: 100%; /* Adjust the height as needed */
-        }
-
-        h1 {
-            text-align: left;
-            padding-left: 50px;
-            margin-top: 50px;
-            color: white;
-        }
-        p {
-            text-align: left;
-            margin-top: 20px;
-            margin-bottom: 80px;
-            padding-left: 155px; 
-        }
-
-        @media only screen and (max-width: 600px) {
-            p {
-                padding-left: 55px; /* Remove padding for smaller screens */
-            }
+        .menu a.active {
+            color: red;
         }
         
 
         .menu a:hover i.fa-instagram {
-            color: red; /* Change the color as needed */
+            color: red;
         }
+        
+        .logo {
+            font-family: Helvetica, Arial, sans-serif; /* Remove duplicate Helvetica */
+            font-size: 22px;
+            font-style: normal;
+            font-weight: bold;
+            line-height: 1;
+            color: #ffffff;
+            margin: 0;
+            position: relative;
+            z-index: 15;
+            letter-spacing: 1.5px; /* Add spacing between characters */
+        }
+
+        a {
+            background-color: transparent;
+            text-decoration: none; /* Remove underline for anchor tags */
+        }
+
+
+        @media only screen and (max-width: 600px) {
+        /* Hamburger menu for small screens */
+        .menu {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            cursor: pointer;
+        }
+
+        .menu-toggle i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .menu-toggle:hover i {
+            color: red;
+        }
+    }
+
+    @media only screen and (min-width: 601px) {
+        /* Normal menu for larger screens */
+        .menu-toggle {
+            display: none;
+        }
+        .close-btn{
+            display: none;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+    }
+
+
+    .menu.active {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+        z-index: 9999; /* Ensure it appears above other elements */
+        text-align: center;
+        padding-top: 50px; /* Add padding to center menu items vertically */
+    }
+
+    .menu.active a {
+        font-size: 24px;
+        color: #fff;
+        margin: 20px 0; /* Add some vertical margin between menu items */
+    }
+
+    /* Style for the overlay when menu is active */
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+        z-index: 9998; /* Ensure it appears below the menu */
+    }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+    }
+
+    .close-btn i {
+        color: #fff;
+        font-size: 24px;
+    }
+
 
     </style>
 </head>
 <body>
     <div class="header">
-        <a href="{{ url_for('home') }}"><h1>Divyansh Films</h1></a>
-        <div class="menu">
+        <a class="logo-container" href="{{ url_for('home') }}">
+            <h1 class="logo">DIVYANSH FILMS</h1>
+        </a>
+        <div class="menu-toggle">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="menu" id="menu">
+            <!-- Close button/icon -->
+            <div class="close-btn" onclick="toggleMenu()">
+                <i class="fa fa-times"></i>
+            </div>
             <a href="{{ url_for('films') }}" {% if active_menu == 'films' %}class="active"{% endif %}>Films</a>
+            <a href="{{ url_for('about') }}" {% if active_menu == 'about' %}class="active"{% endif %}>About Us</a>
             <a href="{{ url_for('contact') }}" {% if active_menu == 'contact' %}class="active"{% endif %}>Contact</a>
             <a href="https://www.instagram.com/divyansh_461/" target="_blank">
-                <i class="fa fa-instagram" style="font-size:25px; color:red"></i>
+                <i class="fa fa-instagram" style="font-size:20px; color:white"></i>
             </a>
         </div>
+        
     </div>
 
     <div class="content">
         {% block content %}{% endblock %}
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menu = document.getElementById('menu');
+            const overlay = document.createElement('div');
+            overlay.classList.add('overlay');
+    
+            menuToggle.addEventListener('click', function () {
+                if (menu) {
+                    menu.classList.toggle('active');
+                    if (menu.classList.contains('active')) {
+                        document.body.appendChild(overlay); // Append overlay to the body when menu is active
+                    } else {
+                        document.body.removeChild(overlay); // Remove overlay when menu is not active
+                    }
+                }
+            });
+    
+            // Function to toggle the menu and overlay
+            function toggleMenu() {
+                menu.classList.toggle('active');
+                if (menu.classList.contains('active')) {
+                    document.body.appendChild(overlay); // Append overlay to the body when menu is active
+                } else {
+                    document.body.removeChild(overlay); // Remove overlay when menu is not active
+                }
+            }
+    
+            // Close button functionality
+            const closeButton = document.querySelector('.close-btn');
+            if (closeButton) {
+                closeButton.addEventListener('click', function () {
+                    toggleMenu(); // Call the toggleMenu function to close the menu
+                });
+            }
+        });
+    </script>
+    
 </body>
 </html>

@@ -5,22 +5,51 @@
 {% block content %}
 
 <style>
-    /* Add this style to highlight the active menu item */
-    .menu a.active {
-        color: red;
+   
+   .content {
+            margin-top: 60px; /* Adjust the top margin to avoid content being hidden under the fixed header */
+        }
+
+    .videos-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        /* height: 100vh; */
     }
+
+    .video-item {
+            width: 70%; 
+            margin-bottom: 20px;
+            border: 2px solid white;
+            overflow: hidden; 
+            margin-top: 30px;
+        }
+
+    #videos video {
+        width: 100%; /* Adjust the width as needed */
+        height: 100%; /* Adjust the height as needed */
+    }
+
+    p {
+            text-align: left;
+            margin-top: 20px;
+            margin-bottom: 80px;
+            padding-left: 155px; 
+        }
+    
+    @media only screen and (max-width: 600px) {
+            p {
+                padding-left: 55px; /* Remove padding for smaller screens */
+            }
+        }
+
+
+
 </style>
 
-<div class="header">
-    <a href="{{ url_for('home') }}"><h1>Divyansh Films</h1></a>
-    <div class="menu">
-        <a href="{{ url_for('films') }}" {% if active_menu == 'films' %}class="active"{% endif %}>Films</a>
-        <a href="{{ url_for('contact') }}" {% if active_menu == 'contact' %}class="active"{% endif %}>Contact</a>
-        <a href="https://www.instagram.com/divyansh_461/" target="_blank">
-            <i class="fa fa-instagram" style="font-size:25px; color:white"></i>
-        </a>
-    </div>
-</div>
+
     
     <div class="content">
         <div class="videos-container">
@@ -29,7 +58,7 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-        <p>A WORLD FAR AWAY - DOCUMENTARY | TRAILER |METEORA|GREECE</p>
+        <p>A WORLD FAR AWAY - <b>DOCUMENTARY | TRAILER |METEORA|GREECE</b></p>
         
         <div class="videos-container">
             <video controls muted loop poster="/static/image/df1.png" width="75%" height="auto" controlsList="nodownload">
@@ -37,7 +66,7 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-        <p>THE LURKING GRADED HD 4k TRAILER REDIT</p>
+        <p>THE LURKING GRADED - <b>HD 4k TRAILER REDIT</b></p>
 
         <div class="videos-container">
             <video controls muted loop poster="/static/image/df3.png" width="75%" height="auto" controlsList="nodownload">
@@ -45,7 +74,7 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-        <p>The DEPARTURE - SHORT FILM |TEASER|</p>
+        <p>THE DEPARTURE - <b>SHORT FILM |TEASER|</b></p>
 
         <div class="videos-container">
             <video controls muted loop poster="/static/image/df4.png" width="75%" height="auto" controlsList="nodownload">
@@ -53,7 +82,7 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-        <p>AMBIVALENCE SHORT FILM</p>
+        <p>AMBIVALENCE - <b>FILM</b></p>
 
         <div class="videos-container">
             <video controls muted loop poster="/static/image/df5.png" width="75%" height="auto" controlsList="nodownload">
@@ -61,7 +90,7 @@
                 Your browser does not support the video tag.
             </video>
         </div>
-        <p>4000 MILES AWAY - INDIAN IN AARHUS, DENMARK |SHORT DOCUMENTARY|</p>
+        <p>4000 MILES AWAY - <b>INDIAN IN AARHUS, DENMARK |SHORT DOCUMENTARY|</b></p>
     </div>
 
 {% endblock %}

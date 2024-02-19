@@ -14,6 +14,10 @@ def home():
 def films():
     return render_template("films.html", active_menu='films')
 
+@app.route('/about', methods=['GET','POST'])
+def about():
+    return render_template("about.html", active_menu='about')
+
 
 @app.route('/contact', methods=['GET','POST'])
 def contact():

@@ -5,43 +5,85 @@
 {% block content %}
     <style>
 
-        .menu a.active {
-        color: red;
-        }
-
-        .contact-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .container {
+            margin-top: 45px;
+            display: grid;
             justify-content: center;
+            align-items: center;
             height: 80vh;
         }
 
-        h3 {
-            margin-top: 10px;
+        .section {
+            flex: 1;
+            margin: 0 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
         }
+
+        .section h4 {
+            text-align: center;
+        }
+
+
+        .social-icons {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            margin: 0 10px;
+        }
+
+        .social-icons a:hover {
+            color: red;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .container {
+                margin-top: 85px;
+
+            }
+
+        }
+
+       
     </style>
 
-    <div class="header">
-        <a href="{{ url_for('home') }}"><h1>Divyansh Films</h1></a>
-        <div class="menu">
-            <a href="{{ url_for('films') }}" {% if active_menu == 'films' %}class="active"{% endif %}>Films</a>
-            <a href="{{ url_for('contact') }}" {% if active_menu == 'contact' %}class="active"{% endif %}>Contact</a>
-            <a href="https://www.instagram.com/divyansh_461/" target="_blank">
-                <i class="fa fa-instagram" style="font-size:25px; color:white"></i>
-            </a>
+        <div class="container">
+            <div class="section">
+                <h4><u>-REACH US AT</u></h4>
+                <div class="contact-icons">
+                    <div>
+                        <i class="fa fa-envelope"></i>
+                        <span>Email: divyansh458sharma@gmail.com</span>
+                    </div> <br>
+                    <div>
+                        <i class="fa fa-phone"></i>
+                        <span>Mobile: +91 9419100461</span>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <h4><u>-CONNECT US ON</u></h4>
+                <div class="social-icons">
+                    <a href="https://www.vimeo.com/example" target="_blank"> 
+                        <i class="fa fa-vimeo"></i> 
+                    </a>
+                    <a href="https://www.instagram.com/divyansh_461/" target="_blank">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@divyanshsharma4923" target="_blank">
+                        <i class="fa fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
 
 
-    
-    
-    <div class="contact-container">
-        <h1><u>Contact Us</u></h1>
-        <h3><b style="padding-left: 30px;">Email:</b> <i>divyansh458sharma@gmail.com</i> </h3>
-        <h3><b>Mobile:</b> <i>+91 9419100461</i> </h3>
-        <h3><b>Instagram:</b> <i>divyansh_461</i></h3>
-    </div>
 
     {% endblock %}
 

@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+    <style>
+        .about-container {
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            justify-content: center;
+            height: 80vh;
+        }
+
+        p {
+            font-family: Helvetica, Arial, sans-serif; /* Remove duplicate Helvetica */
+            /* font-size: 22px; */
+            font-style: normal;
+            /* font-weight: bold; */
+            line-height: 1.5;
+            padding-left: 150px;
+            padding-right: 150px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .about-container {
+                margin-top: 320px;
+
+            }
+
+            p {
+                margin-bottom: 30px;
+                padding-left: 100px;
+                align-items: left;
+                justify-content: left;
+            }
+        }
+
+        
+    </style>
+    
+    <div class="about-container">
+        <p>Divyansh Sharma is an Indian Director born in Jammu & Kashmir, working across scripted film and music videos, 
+            at the age of 23 Divyansh wrote, co-produced and directed his first 20 minute film, "I shoot "em down" features Rachit Singh (recently worked in Hotstar+Disney Karma Calling).</p>
+        
+        <p>His journey continued through his selection at European Film College, Denmark, where he expanded his skills & cinematic language.
+        After graduating, he embarked on the path of independent filmmaking. His latest work includes The Lurking written & directed, co-produced by Kalpa Chitra Productions has been selected at the Wench Film Festival. 
+        He’s directed several experimental & gritty short films. Currently working as a Production Coordinator at redchillies color</p>
+    
+        <p>His motto <b>‘Get busy living - or get busy dying’</b> - Ellis ‘Red’</p>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelector('.menu a[href="{{ url_for('about') }}"]').classList.add('active');
+        });
+    </script>
+    {% endblock %}
